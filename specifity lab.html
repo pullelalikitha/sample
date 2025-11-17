@@ -1,0 +1,28 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Specificity</title>
+  <style>
+  p {
+      color: blue;
+    }
+  .highlight {
+      color: green;
+    }
+  #special {
+      color: red;
+    }
+ </style>
+</head>
+<body>
+ <p>This is a normal paragraph.</p>
+
+<p class="highlight">This paragraph uses a class.</p>
+
+  <p id="special">This paragraph uses an ID.</p>
+
+  <p style="color: orange;">This paragraph uses inline style.</p>
+
+</body>
+</html>

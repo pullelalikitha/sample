@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bill Splitter with GST</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #eef2f3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .container {
+        background: #fff;
+        padding: 25px;
+        width: 320px;
+        border-radius: 12px;
+        box-shadow: 0 0 12px rgba(0,0,0,0.2);
+        text-align: center;
+    }
+    input {
+        width: 90%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+    button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 6px;
+        background: #28a745;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #1e7d34;
+    }
+    #result {
+        margin-top: 15px;
+        font-weight: bold;
+        color: #28a745;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Bill Splitter + GST 💸</h2>
+
+    <input type="number" id="bill" placeholder="Bill Amount (without GST)">
+    <input type="number" id="gst" placeholder="GST % (e.g., 18)">
+    <input type="number" id="people" placeholder="Number of People">
+
+    <button onclick="splitBill()">Split Bill</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function splitBill() {
+    const bill = parseFloat(document.getElementById("bill").value);
+    const gst = parseFloat(document.getElementById("gst").value);
+    const people = parseInt(document.getElementById("people").value);
+
+    if (!bill || !gst || !people || people <= 0) {
+        document.getElementById("result").innerHTML = "⚠ Enter valid values!";
+        return;
+    }
+
+    const gstAmount = bill * (gst / 100);
+    const totalBill = bill + gstAmount;
+    const share = (totalBill / people).toFixed(2);
+
+    document.getElementById("result").innerHTML =
+    `Total with GST: ₹${totalBill.toFixed(2)}<br>
+     Each Person Pays: ₹${share}`;
+}
+</script>
+
+</body>
+</html>
